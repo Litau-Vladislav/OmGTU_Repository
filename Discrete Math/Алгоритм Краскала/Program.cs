@@ -76,28 +76,14 @@ class KruskalAlgorithm
 
     public static void Main()
     {
-        // Console.Write("Введите кол-во вершин графа: ");
-        int v = 8; //Convert.ToInt32(Console.ReadLine());
+        int v = 8;
         List<Edge> edges = new List<Edge>();
-        /* while (true)
-         {
-             int a; int b; double c; string d;
-             Console.WriteLine("Введите длину ребра(если закончили ввод ребер, нажмите <0>, <-> или Enter: ");
-             d = Console.ReadLine();
-             if (d == "" || d == "0" || d == "-") break;
-             c = Convert.ToDouble(d);
-             Console.WriteLine("Введите номер первой вершины ребра: ");
-             a = Convert.ToInt32(Console.ReadLine());
-             Console.WriteLine("Введите номер второй вершины ребра: ");
-             b = Convert.ToInt32(Console.ReadLine());
-             edges.Add(new Edge { Source = a - 1, Destination = b - 1, Weight = c });
-         }*/
         edges.Add(new Edge { Source = 0, Destination = 1, Weight = 2 });
         edges.Add(new Edge { Source = 0, Destination = 2, Weight = 2 });
         edges.Add(new Edge { Source = 0, Destination = 4, Weight = 7 });
-        edges.Add(new Edge { Source = 2, Destination = 3, Weight = 9 });
-        edges.Add(new Edge { Source = 2, Destination = 4, Weight = 2 });
-        edges.Add(new Edge { Source = 2, Destination = 2, Weight = 2 });
+        edges.Add(new Edge { Source = 1, Destination = 3, Weight = 9 });
+        edges.Add(new Edge { Source = 1, Destination = 4, Weight = 2 });
+        edges.Add(new Edge { Source = 1, Destination = 2, Weight = 2 });
         edges.Add(new Edge { Source = 2, Destination = 4, Weight = 5 });
         edges.Add(new Edge { Source = 3, Destination = 4, Weight = 10 });
         edges.Add(new Edge { Source = 3, Destination = 6, Weight = 2 });
