@@ -1,0 +1,81 @@
+using System;
+using System.Collections;
+
+namespace Hash
+{
+    class Program
+    {
+        static void Main()
+        {
+            Hashtable result = new Hashtable();
+            Hashtable result1 = new Hashtable();
+            Dictionary<string, double> res = new Dictionary<string, double>();
+            Dictionary<string, double> res1 = new Dictionary<string, double>();
+            Queue<string> numbers = new Queue<string>();
+            while (true)
+            {
+                Console.WriteLine("Введите через пробел номер телефона, дату разговора, время начала разговора, кол-во минут разговора. \nПример ввода данных: 88888888888 01.01.2024 13:00 15 \nВведите '-', если закончили ввод данных.");
+                string data = Console.ReadLine();
+                if (data == "-" || data == null) break;
+                else numbers.Enqueue(data);
+            }
+            foreach (var n in numbers)
+            {
+                string[] pn = n.Split(' ');
+                string num = pn[0];
+                double minutes = Convert.ToDouble(pn[3]);
+                if (res.ContainsKey(num))
+                {
+                    res[num] += minutes;
+                }
+                else res.Add(num, minutes);
+                if (result.ContainsKey(num))
+                {
+                    string vrn = num;
+                    double vrmin = Convert.ToDouble(result[num]) + minutes;
+                    result.Remove(num);
+                    result.Add(vrn, vrmin);
+                }
+                else result.Add(num, minutes);
+            }
+            Console.WriteLine("ОТВЕТ НА ПЕРВОЕ ЗАДАНИЕ: ");
+            Console.WriteLine("Результат из словаря: ");
+            foreach (var i in res) { Console.WriteLine($"Номер телефона: {i.Key}  Кол-во минут: {i.Value}"); }
+            ICollection keys = result.Keys;
+            Console.WriteLine("Результат из хеш-таблицы: ");
+            foreach (String k in keys)
+            {
+                Console.WriteLine("Номер телефона: " + k + " Кол-во минут:" + result[k]);
+            }
+
+            foreach (var n in numbers)
+            {
+                string[] pn = n.Split(' ');
+                string key = pn[1];
+                double minutes = Convert.ToDouble(pn[3]);
+                if (res1.ContainsKey(key))
+                {
+                    res1[key] += minutes;
+                }
+                else res1.Add(key, minutes);
+                if (result1.ContainsKey(key))
+                {
+                    string vrn = key;
+                    double vrmin = Convert.ToDouble(result1[key]) + minutes;
+                    result1.Remove(key);
+                    result1.Add(vrn, vrmin);
+                }
+                else result1.Add(key, minutes);
+            }
+            Console.WriteLine("\nОТВЕТ НА ВТОРОЕ ЗАДАНИЕ: ");
+            Console.WriteLine("Результат из словаря: ");
+            foreach (var i in res1) { Console.WriteLine($"Дата разговора: {i.Key}  Кол-во минут: {i.Value}"); }
+            ICollection keys1 = result1.Keys;
+            Console.WriteLine("Результат из хеш-таблицы: ");
+            foreach (String k in keys1)
+            {
+                Console.WriteLine("Дата разговора: " + k + " Кол-во минут:" + result1[k]);
+            }
+        }
+    }
+}
