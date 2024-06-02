@@ -9,7 +9,7 @@
                 for (int i = 0; i < graph.GetLength(0); i++)
                 {
                     for (int j = 0; j < graph.GetLength(0); j++)
-                        if (i != j && (graph[i, j] > graph[i, k] + graph[k, j] || graph[i, j] == 0))
+                        if (i != j && graph[i, j] > graph[i, k] + graph[k, j])
                         {
                             graph[i, j] = graph[i, k] + graph[k, j];
                         }
